@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Южный Парк</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <h1 class="link"><a href="index.html">Shatersk.<span style="color: black;">D</span>
+        <span style="color: blue;">N</span>
+        <span style="color: red;">R</span>
+    </a></h1>
+    <img src="img/gerb160rus.jpg" height="152" width="160" alt = ''  />
+</header>
+<nav>
+    <ul class="menu-main">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="history.html">История </a></li>
+        <li><a href="infrastruct.html">Инфраструктура </a></li>
+        <li><a href="culture.html">Исскуство и культура </a></li>
+        <li><a href="FAQ.html">Обратная связь</a></li>
+    </ul>
+</nav>
+<main>
+    <section class="south_park-section">
+        <canvas id="sp_canvas" height="300" width="800"></canvas>
+        <script>
+            var canvas = document.getElementById("sp_canvas");
+            var ctx = canvas.getContext("2d");
+            // Background
+            ctx.fillStyle = "#89CFF0";
+            ctx.fillRect(0, 0, 800, 300);
+            // First mountain
+            ctx.beginPath();
+            ctx.fillStyle = "#006400";
+            ctx.moveTo(0, 80);
+            ctx.lineTo(80, 0);
+            ctx.lineTo(160, 0);
+            ctx.lineTo(600, 300);
+            ctx.lineTo(0, 400);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.fillStyle = "#FFFFFF";
+            ctx.arc(100,-80,160, Math.PI*133/200, Math.PI/3, true);
+            ctx.fill();
+            ctx.arc(180,-10,80, Math.PI*3/4, Math.PI*53/200, true);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.moveTo(20,60);
+            ctx.lineTo(80,0);
+            ctx.lineTo(160,0);
+            ctx.lineTo(235,51);
+            ctx.fill();
+            // Second mountain
+            ctx.beginPath();
+            ctx.fillStyle = "#006400";
+            ctx.moveTo(800, 40);
+            ctx.lineTo(200, 300);
+            ctx.lineTo(800, 300);
+            ctx.closePath();
+            ctx.fill();
+            ctx.beginPath();
+            ctx.fillStyle = "#FFFFFF";
+            ctx.arc(780,-170,250, Math.PI*115/200, Math.PI*15/100, true);
+            ctx.fill();
+            // Third mountain
+            ctx.beginPath();
+            ctx.fillStyle = "#007400";
+            ctx.moveTo(0, 400);
+            ctx.lineTo(350, 0);
+            ctx.lineTo(550, 0);
+            ctx.lineTo(800, 220);
+            ctx.closePath();
+            ctx.fill();
+            ctx.beginPath();
+            ctx.fillStyle = "#FFFFFF";
+            ctx.arc(420,-230,320, Math.PI*126/200, Math.PI/3, true);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(580,-100,180, Math.PI, Math.PI*81/200, true);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.moveTo(292,65);
+            ctx.lineTo(350,0);
+            ctx.lineTo(550,0);
+            ctx.lineTo(630,70);
+            ctx.fill();
+            // Ground
+            ctx.beginPath();
+            ctx.fillStyle = "#FFFFFF";
+            ctx.arc(400, 4600, 4400, Math.PI, 0, false);
+            ctx.fill();
+            function face(ctx, xc, yc, r) {
+                ctx.beginPath();
+                ctx.fillStyle = "#FFE5b4";
+                ctx.arc(xc,yc,r, Math.PI*2 ,0, true);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.fillStyle = "#FFFFFF";
+                ctx.moveTo(xc-20,yc+8);
+                ctx.bezierCurveTo(xc-30,yc,xc-14, yc-20, xc-4, yc-12);
+                ctx.bezierCurveTo(xc+6,yc-4,xc-10, yc+16, xc-20, yc+8);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.moveTo(xc+20,yc+8);
+                ctx.bezierCurveTo(xc+30,yc,xc+14, yc-20, xc+4, yc-12);
+                ctx.bezierCurveTo(xc-6,yc-4,xc+10, yc+16, xc+20, yc+8);
+                ctx.fill();
+                ctx.fillStyle = "#000000";
+                ctx.beginPath();
+                ctx.arc(xc-8,yc-3,1,Math.PI*2 ,0, true);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(xc+8,yc-3,1,Math.PI*2 ,0, true);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(xc,yc+10,20, Math.PI*60/100, Math.PI*40/100, true);
+                ctx.stroke();
+            }
+            function body(ctx, xc, yc, top, hand, bottom) {
+                ctx.beginPath();
+                ctx.fillStyle = "black";
+                ctx.rect(xc-30,yc+99, 60, 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.fillStyle = bottom;
+                ctx.rect(xc-27, yc+80, 54, 19);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.fillStyle = top;
+                ctx.rect(xc-30, yc+30, 60, 50);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.fillStyle = top;
+                ctx.moveTo(xc-30, yc+30);
+                ctx.bezierCurveTo(xc-40, yc+50, xc-40, yc+70, xc-35, yc+70);
+                ctx.lineTo(xc-30, yc+70);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.moveTo(xc-30,yc+70);
+                ctx.lineTo(xc-25, yc+45);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.fillStyle = top;
+                ctx.moveTo(xc+30, yc+30);
+                ctx.bezierCurveTo(xc+40, yc+50, xc+40, yc+70, xc+35, yc+70);
+                ctx.lineTo(xc+30, yc+70);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.moveTo(xc+30,yc+70);
+                ctx.lineTo(xc+25, yc+45);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(xc,yc+30);
+                ctx.lineTo(xc, yc+80);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.fillStyle = hand;
+                ctx.arc(xc-33, yc+73, 7, Math.PI*2 ,0, true);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.fillStyle = hand;
+                ctx.arc(xc+33, yc+73, 7, Math.PI*2 ,0, true);
+                ctx.fill();
+            }
+            function huge_body(ctx, xc, yc, top, hand, bottom) {
+                ctx.beginPath();
+                ctx.fillStyle = "black";
+                ctx.rect(xc-50,yc+99, 100, 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.fillStyle = bottom;
+                ctx.moveTo(xc-49, yc+99);
+                ctx.lineTo(xc-55, yc+85);
+                ctx.lineTo(xc+55, yc+85);
+                ctx.lineTo(xc+49, yc+99);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.fillStyle = top;
+                ctx.moveTo(xc-55, yc+85);
+                ctx.bezierCurveTo(xc-70, yc+70, xc-70, yc+35, xc-30, yc+30);
+                ctx.lineTo(xc+35,yc+30);
+                ctx.bezierCurveTo(xc+70, yc+35, xc+70, yc+70, xc+55, yc+85);
+                ctx.bezierCurveTo(xc-20, yc+96, xc-25, yc+99, xc-55,yc+85);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.moveTo(xc,yc+50);
+                ctx.lineTo(xc, yc+90);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.fillStyle = hand;
+                ctx.arc(xc-58, yc+60, 12, Math.PI*2 ,0, true);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.fillStyle = hand;
+                ctx.arc(xc+58, yc+60, 12, Math.PI*2 ,0, true);
+                ctx.fill();
+            }
+            function buttons(ctx, xc, yc) {
+                ctx.fillStyle = "#000000";
+                ctx.beginPath();
+                ctx.arc(xc-6,yc+70,1,Math.PI*2 ,0, true);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(xc-6,yc+80,1,Math.PI*2 ,0, true);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(xc-6,yc+90,1,Math.PI*2 ,0, true);
+                ctx.fill();
+            }
+            function pockets(ctx, xc, yc) {
+                ctx.moveTo(xc-20, yc+50);
+                ctx.lineTo(xc-8, yc+50);
+                ctx.lineTo(xc-8, yc+65);
+                ctx.lineTo(xc-20, yc+65);
+                ctx.lineTo(xc-20,yc+50);
+                ctx.lineTo(xc-14, yc+55);
+                ctx.lineTo(xc-8, yc+50);
+                ctx.moveTo(xc+20, yc+50);
+                ctx.lineTo(xc+8, yc+50);
+                ctx.lineTo(xc+8, yc+65);
+                ctx.lineTo(xc+20, yc+65);
+                ctx.lineTo(xc+20,yc+50);
+                ctx.lineTo(xc+14, yc+55);
+                ctx.lineTo(xc+8, yc+50);
+                ctx.stroke();
+            }
+            function cap(ctx, xc, yc) {
+                ctx.fillStyle = "darkgreen";
+                ctx.rect(xc-35, yc-35, 70, 20);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.fillStyle = "lightgreen";
+                ctx.moveTo(xc-40, yc-10);
+                ctx.quadraticCurveTo(xc-50,yc-50, xc, yc-50);
+                ctx.quadraticCurveTo(xc+50,yc-50, xc+40, yc-10);
+                ctx.lineTo(xc+35, yc-10);
+                ctx.lineTo(xc+35, yc-30);
+                ctx.lineTo(xc-35, yc-30);
+                ctx.lineTo(xc-35, yc-10);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.moveTo(xc+40, yc-10);
+                ctx.bezierCurveTo(xc+55,yc,xc+57, yc+22, xc+42, yc+12);
+                ctx.bezierCurveTo(xc+27,yc,xc+25, yc-22, xc+40, yc-10);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.moveTo(xc-40, yc-10);
+                ctx.bezierCurveTo(xc-55,yc,xc-57, yc+22, xc-42, yc+12);
+                ctx.bezierCurveTo(xc-27,yc,xc-25, yc-22, xc-40, yc-10);
+                ctx.fill();
+            }
+            // First dude
+            ctx.beginPath();
+            huge_body(ctx, 180, 155, "red", "yellow", "brown");
+            ctx.beginPath();
+            ctx.arc(180,170,50, Math.PI*2 ,0, true);
+            ctx.fillStyle = "deepskyblue";
+            ctx.fill();
+            ctx.beginPath();
+            ctx.fillStyle = "yellow";
+            ctx.arc(180, 120, 10, Math.PI*2 ,0, true);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(180, 300, 150, Math.PI*139/100 ,Math.PI*161/100, false);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(180, 300, 150, Math.PI*2 ,0, true);
+            ctx.save();
+            ctx.clip();
+            face(ctx, 180,170, 50);
+            ctx.restore();
+            ctx.beginPath();
+            buttons(ctx, 180, 155);
+            // Second dude
+            ctx.beginPath();
+            body(ctx, 330,150, "#E67200", "green", "darkblue");
+            ctx.beginPath();
+            face(ctx, 330,150, 40);
+            ctx.beginPath();
+            pockets(ctx, 330,150);
+            ctx.beginPath();
+            cap(ctx, 330,150);
+            // Third dude
+            ctx.beginPath();
+            body(ctx, 480,150, "brown", "red", "darkblue");
+            ctx.beginPath();
+            ctx.arc(480,150,40, Math.PI*2 ,0, true);
+            ctx.fillStyle = "darkblue";
+            ctx.fill();
+            ctx.beginPath();
+            ctx.fillStyle = "darkred";
+            ctx.arc(480, 110, 8, Math.PI*2 ,0, true);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(480, 285, 150, Math.PI*141/100 ,Math.PI*159/100, false);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(480, 285, 150, Math.PI*2 ,0, true);
+            ctx.save();
+            ctx.clip();
+            face(ctx, 480,150, 40);
+            ctx.restore();
+            ctx.beginPath();
+            buttons(ctx, 480, 130);
+            // Fourth dude
+            ctx.beginPath();
+            body(ctx, 630,150, "#E67200", "brown", "#E67200");
+            ctx.beginPath();
+            ctx.fillStyle = "#E67200"
+            ctx.arc(630,150, 40, Math.PI*2 ,0, true);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(630,150, 22, Math.PI*2 ,0, true);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(630,150, 20, Math.PI*2 ,0, true);
+            ctx.stroke();
+            ctx.clip();
+            face(ctx, 630,150, 40);
+        </script>
+        <noscript>
+            Ваш браузер не поддерживает этот скрипт!
+        </noscript>
+    </section>
+</main>
+<footer>
+    <p>
+        <small>Все права защищены Мной</small>
+    <address >
+        Не_скажу1@gmail.com
+    </address>
+    </p>
+</footer>
+</body>
+</html>
